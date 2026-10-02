@@ -10,6 +10,7 @@ let notes = [
 const CATEGORIES = ["personal", "work", "study"];
 const MAX_LENGTH = 200;
 
+// ---------- Helper ----------
 // Trim, collapse repeated spaces and lower-case, so comparisons ignore
 // case and extra spaces.
 function normalise(text) {
@@ -52,7 +53,8 @@ function countByCategory() {
 }
 
 // ---------- 4. getSummary ----------
-// Returns a sentence such as "5 notes: 2 personal, 1 work, 2 study."
+// Returns a sentence such as "5 notes: 2 personal, 2 study, 1 work."
+// Categories are listed in the order countByCategory() found them.
 function getSummary() {
   const counts = countByCategory();
   const total = notes.length;
@@ -63,10 +65,8 @@ function getSummary() {
   }
 
   const parts = [];
-  for (const category of CATEGORIES) {
-    if (counts[category]) {
-      parts.push(`${counts[category]} ${category}`);
-    }
+  for (const [category, count] of Object.entries(counts)) {
+    parts.push(`${count} ${category}`);
   }
   return `${total} ${noun}: ${parts.join(", ")}.`;
 }
@@ -137,7 +137,7 @@ notes = savedNotes;
 
 // getSummary
 console.log("getSummary():", getSummary());
-// "5 notes: 2 personal, 1 work, 2 study."
+// "5 notes: 2 personal, 2 study, 1 work."
 notes = [{ id: 1, text: "Only note", category: "work" }];
 console.log("getSummary() with one note:", getSummary());
 // "1 note: 1 work."  (edge case: singular "note")
@@ -168,4 +168,4 @@ console.log("addNote('Plan holiday', 'hobby'):", addNote("Plan holiday", "hobby"
 console.log("addNote('a'.repeat(200), 'study'):", addNote("a".repeat(200), "study"));
 // true  (edge case: exactly 200 characters is allowed, added as id 7)
 console.log("getSummary() after adding:", getSummary());
-// "7 notes: 3 personal, 1 work, 3 study."
+// "7 notes: 3 personal, 3 study, 1 work."
