@@ -1,176 +1,217 @@
+/* ---------- Theme: custom properties ---------- */
+:root {
+  /* Colors */
+  --color-primary: #1d3b4f;        /* header, headings, table head */
+  --color-primary-light: #cfdce5;  /* tagline text on primary */
+  --color-accent: #2a7f62;         /* buttons, focus, feature cards */
+  --color-accent-dark: #1e5f49;    /* button hover */
+  --color-highlight: #f2b84b;      /* nav hover underline */
+  --color-bg: #eef1f4;             /* page background */
+  --color-surface: #ffffff;        /* cards and inputs */
+  --color-surface-alt: #f4f7f9;    /* zebra rows, feature cards */
+  --color-text: #1f2933;
+  --color-text-muted: #52606d;
+  --color-border: #bcccdc;
+  --color-border-light: #d9e2ec;
+  --color-input-border: #9fb3c8;
+  --color-on-primary: #ffffff;
+
+  /* Spacing scale */
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 40px;
+
+  /* Shape and layout */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --content-width: 900px;
+  --transition: 0.3s ease;
+}
+
+/* ---------- 1. Reset and base styles ---------- */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
- 
+
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 1rem;
   line-height: 1.6;
-  color: #1f2933;
-  background-color: #eef1f4;
+  color: var(--color-text);
+  background-color: var(--color-bg);
 }
 
+/* ---------- 2. Header ---------- */
 header {
-  background-color: #1d3b4f;
-  color: #ffffff;
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
   text-align: center;
-  padding: 40px 20px 24px;
+  padding: var(--space-2xl) 20px var(--space-lg);
 }
- 
+
 header h1 {
   font-size: 2.75rem;
   letter-spacing: 0.5px;
-  margin-bottom: 8px;
+  margin-bottom: var(--space-xs);
 }
- 
+
 header p {
   font-size: 1.1rem;
-  color: #cfdce5;
+  color: var(--color-primary-light);
   margin-bottom: 20px;
 }
 
+/* ---------- 3. Navigation (Flexbox) ---------- */
 nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 16px;
+  gap: var(--space-md);
 }
- 
+
 nav a {
-  color: #ffffff;
+  color: var(--color-on-primary);
   text-decoration: none;
   font-weight: 600;
-  padding: 8px 16px;
+  padding: var(--space-xs) var(--space-md);
   border-bottom: 3px solid transparent;
   border-radius: 4px;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  transition: background-color var(--transition), border-color var(--transition);
 }
- 
+
 nav a:hover,
 nav a:focus-visible {
   background-color: rgba(255, 255, 255, 0.15);
-  border-bottom-color: #f2b84b;
+  border-bottom-color: var(--color-highlight);
 }
 
+/* ---------- 4. Main and section cards ---------- */
 main {
-  max-width: 900px;
-  margin: 32px auto;
+  max-width: var(--content-width);
+  margin: var(--space-xl) auto;
   padding: 0 20px;
 }
- 
+
 main > h2 {
-  margin-bottom: 8px;
+  margin-bottom: var(--space-xs);
 }
- 
+
 main > p {
   margin-bottom: 20px;
 }
- 
+
 section {
-  background-color: #ffffff;
-  border-radius: 10px;
-  padding: 24px;
-  margin-bottom: 24px;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
- 
+
 section h2,
 section h3 {
-  color: #1d3b4f;
-  margin-bottom: 12px;
+  color: var(--color-primary);
+  margin-bottom: var(--space-sm);
 }
- 
-/* Lists inside sections (notes and usage steps) */
+
 section ul,
 section ol {
-  padding-left: 24px;
+  padding-left: var(--space-lg);
 }
- 
+
 section li {
   margin-bottom: 6px;
 }
- 
+
 #note-count {
-  margin-bottom: 8px;
-  color: #52606d;
+  margin-bottom: var(--space-xs);
+  color: var(--color-text-muted);
 }
 
+/* ---------- 5. Features list as a grid of cards ---------- */
 .features {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 16px;
+  gap: var(--space-md);
   list-style: none;
   padding-left: 0;
 }
- 
+
 .features li {
-  background-color: #f4f7f9;
-  border: 1px solid #d9e2ec;
-  border-left: 4px solid #2a7f62;
-  border-radius: 8px;
-  padding: 16px;
+  background-color: var(--color-surface-alt);
+  border: 1px solid var(--color-border-light);
+  border-left: 4px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
   margin-bottom: 0;
   text-align: center;
   font-weight: 600;
 }
 
+/* ---------- 6. Table ---------- */
 table {
   width: 100%;
   border-collapse: collapse;
 }
- 
+
 th,
 td {
-  border: 1px solid #bcccdc;
+  border: 1px solid var(--color-border);
   padding: 10px 14px;
   text-align: left;
 }
- 
+
 thead th {
-  background-color: #1d3b4f;
-  color: #ffffff;
-}
- 
-tbody tr:nth-child(even) {
-  background-color: #f4f7f9;
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
 }
 
+tbody tr:nth-child(even) {
+  background-color: var(--color-surface-alt);
+}
+
+/* ---------- 6. Forms (fields stacked, full width) ---------- */
 form {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--space-xs);
 }
- 
+
 label {
   font-weight: 600;
   margin-top: 6px;
 }
- 
+
 input,
 textarea {
   width: 100%;
-  padding: 10px 12px;
+  padding: 10px var(--space-sm);
   font-family: inherit;
   font-size: 1rem;
-  border: 1px solid #9fb3c8;
-  border-radius: 6px;
-  background-color: #ffffff;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--color-input-border);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface);
+  transition: border-color var(--transition), box-shadow var(--transition);
 }
- 
+
 textarea {
   resize: vertical;
 }
- 
+
 input:focus,
 textarea:focus {
   outline: none;
-  border-color: #2a7f62;
+  border-color: var(--color-accent);
   box-shadow: 0 0 0 3px rgba(42, 127, 98, 0.25);
 }
 
+/* ---------- 7. Buttons with hover and transition ---------- */
 button {
   align-self: flex-start;
   margin-top: 10px;
@@ -178,62 +219,64 @@ button {
   font-family: inherit;
   font-size: 1rem;
   font-weight: 600;
-  color: #ffffff;
-  background-color: #2a7f62;
+  color: var(--color-on-primary);
+  background-color: var(--color-accent);
   border: none;
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background-color var(--transition), transform 0.2s ease;
 }
- 
+
 button:hover,
 button:focus-visible {
-  background-color: #1e5f49;
+  background-color: var(--color-accent-dark);
   transform: translateY(-2px);
 }
- 
+
 button:active {
   transform: translateY(0);
 }
 
+/* ---------- Footer ---------- */
 footer {
   text-align: center;
   padding: 20px;
-  color: #52606d;
+  color: var(--color-text-muted);
   font-size: 0.9rem;
 }
 
-
+/* ---------- 8. Small screens ---------- */
 @media (max-width: 600px) {
-  header {
-    padding: 20px 12px 14px;
+  :root {
+    /* Tighter spacing on phones: every rule using these updates automatically */
+    --space-lg: 16px;
+    --space-2xl: 20px;
+    --space-xl: 20px;
   }
- 
+
+  header {
+    padding: var(--space-2xl) var(--space-sm) 14px;
+  }
+
   header h1 {
     font-size: 1.75rem;
   }
- 
+
   header p {
     font-size: 0.95rem;
-    margin-bottom: 12px;
+    margin-bottom: var(--space-sm);
   }
- 
+
   main {
-    margin: 20px auto;
-    padding: 0 12px;
+    padding: 0 var(--space-sm);
   }
- 
-  section {
-    padding: 16px;
-  }
- 
+
   th,
   td {
-    padding: 8px;
+    padding: var(--space-xs);
   }
- 
+
   button {
     align-self: stretch;
   }
 }
- 
