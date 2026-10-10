@@ -1,7 +1,7 @@
 const MAX_CHARS = 200;
 const WARN_AT = 180;
 
-const textarea = document.getElementById("description");
+const textarea = document.getElementById("note-text");
 const charCount = document.getElementById("char-count");
 const wordCount = document.getElementById("word-count");
 const clearBtn = document.getElementById("clear-btn");
