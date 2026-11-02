@@ -1,0 +1,7 @@
+# Reflection
+
+**The most difficult concept.** The hardest idea for me was how a database stops two people getting the same thing, which means transactions, constraints and race conditions. At first, "check if the seat is free, then claim it" sounded correct to me, and I couldn't see why it could fail. I learn best by trying things, so I overcame it by testing it hands-on in an SQL playground: I ran two competing updates on the same row and watched the second one change zero rows. That made it click. A check and a claim must be one atomic step, with a UNIQUE constraint as a safety net underneath.
+
+**What I would improve in my capstone.** I would improve the clarity of my architecture diagram and how I explained my estimates. I would also write down my assumptions earlier, so that every number in a design, such as requests per second or storage per year, can be traced back to them and defended when someone asks.
+
+**What I will learn next.** I want to apply this design thinking to my own GIS projects. My next step is building the backend for my GeoAI assistant for QGIS: an API with proper authentication and the tool-calling layer behind the chat. After that I want to learn caching with Redis and how to deploy an app, so I can see queues, caches and load balancers working for real instead of only drawing them.
